@@ -38,15 +38,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func back () {
-        if position < 2 {
-            position += 1
+        position += 1
+        if position > 2 {
+            position = 0
         }
         label.text = data[position]
         peanutsImageView.image = UIImage(named: imageData[position])
     }
     @IBAction func next () {
-        if position > 0 {
-            position -= 1
+        position -= 1
+        if position < 0 {
+            position = 2
         }
         label.text = data[position]
         peanutsImageView.image = UIImage(named: imageData[position])
