@@ -16,22 +16,10 @@ class ViewController: UIViewController {
     
     //変数を宣言
     var position: Int = 0
-    var data: [String] = ["charlie", "snoopy", "woodstock"]
+    var characters: [String] = ["Charlie", "Snoopy", "Woodstock"]
     var imageData: [String] = ["charlie.png", "snoopy.png", "woodstock.png"]
     
-    class Peanuts {
-        
-        var name: String
-        var imageName: String
-        
-        init(name: String, imageName: String) {
-            
-            self.name = name
-            self.imageName = imageName
-        }
-        
-        var data: [Peanuts] = [Peanuts(name: "charlie", imageName: "charlie.png"), Peanuts(name: "snoopy", imageName: "snoopy.png"), Peanuts(name: "woodstock", imageName: "woodstock.png") ]
-    }
+    var data: [Peanuts] = [Peanuts(name: "Charlie", imageName: "charlie.png"), Peanuts(name: "Snoopy", imageName: "snoopy.png"), Peanuts(name: "Woodstock", imageName: "woodstock.png") ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +30,7 @@ class ViewController: UIViewController {
         if position > 2 {
             position = 0
         }
-        label.text = data[position]
+        label.text = characters[position]
         peanutsImageView.image = UIImage(named: imageData[position])
     }
     @IBAction func next () {
@@ -50,7 +38,20 @@ class ViewController: UIViewController {
         if position < 0 {
             position = 2
         }
-        label.text = data[position]
+        label.text = characters[position]
         peanutsImageView.image = UIImage(named: imageData[position])
     }
+}
+
+class Peanuts {
+    
+    var name: String
+    var imageName: String
+    
+    init(name: String, imageName: String) {
+        
+        self.name = name
+        self.imageName = imageName
+    }
+
 }
