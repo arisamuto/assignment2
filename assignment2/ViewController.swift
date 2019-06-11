@@ -16,9 +16,6 @@ class ViewController: UIViewController {
     
     //変数を宣言
     var position: Int = 0
-    var characters: [String] = ["Charlie", "Snoopy", "Woodstock"]
-    var imageData: [String] = ["charlie.png", "snoopy.png", "woodstock.png"]
-    
     var data: [Peanuts] = [Peanuts(name: "Charlie", imageName: "charlie.png"), Peanuts(name: "Snoopy", imageName: "snoopy.png"), Peanuts(name: "Woodstock", imageName: "woodstock.png") ]
     
     override func viewDidLoad() {
@@ -30,16 +27,16 @@ class ViewController: UIViewController {
         if position > 2 {
             position = 0
         }
-        label.text = characters[position]
-        peanutsImageView.image = UIImage(named: imageData[position])
+        label.text = data[position].name
+        peanutsImageView.image = data[position].getImage()
     }
     @IBAction func next () {
         position -= 1
         if position < 0 {
             position = 2
         }
-        label.text = characters[position]
-        peanutsImageView.image = UIImage(named: imageData[position])
+        label.text = data[position].name
+        peanutsImageView.image = data[position].getImage()
     }
 }
 
@@ -53,5 +50,8 @@ class Peanuts {
         self.name = name
         self.imageName = imageName
     }
-
+    func getImage() -> UIImage?{
+        
+    return UIImage(named: imageName)
+}
 }
